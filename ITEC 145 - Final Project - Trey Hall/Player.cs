@@ -14,8 +14,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _x;
         private int _y;
 
-        private int _xSpeed = 15;
-        private int _ySpeed = 15;
+        private int _xSpeed = 10;
+        private int _ySpeed = 10;
 
         private int _height = 30;
         private int _width = 30;
@@ -32,8 +32,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         }
 
         //Properties
-        public int X { get { return _x; } }
-        public int Y { get { return _y; } }
+        public int Xspeed { get { return _xSpeed; } }
+        public int Yspeed { get { return _ySpeed; } }
 
 
         //Methods
@@ -78,9 +78,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
             if (_LeftRight == false)
             {
                 _x += _xSpeed;
-                if (_x + _height > mainForm.ClientSize.Height)
+                if (_x + _height > mainForm.ClientSize.Width)
                 {
-                    _x = mainForm.ClientSize.Height - _height;
+                    _x = mainForm.ClientSize.Width - _width;
                 }
 
             }

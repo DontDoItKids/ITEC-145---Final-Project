@@ -7,7 +7,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         bool UpOrDown;
         bool LeftOrRight;
 
-        public enum KeyMove { none, up, down, left, right }
+        public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
 
         public Form1()
@@ -26,26 +26,22 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.W)
+            switch(e.KeyData)
             {
-                UpOrDown = true;
-                keyPlayer = KeyMove.up;
+                case Keys.A:
+                    p1 |= KeyMove.left;
+                    break;
+                case Keys.D:
+                    p1 |= KeyMove.right;
+                    break;
+                case Keys.W:
+                    p1 |= KeyMove.up;
+                    break;
+                case Keys.S:
+                    p1 |= KeyMove.down;
+                    break;
             }
-            else if (e.KeyCode == Keys.S)
-            {
-                UpOrDown = false;
-                keyPlayer = KeyMove.down;
-            }
-            else if (e.KeyCode == Keys.A)
-            {
-                LeftOrRight = true;
-                keyPlayer = KeyMove.left;
-            }
-            else if (e.KeyCode == Keys.D)
-            {
-                LeftOrRight= false;
-                keyPlayer = KeyMove.right;
-            }
+            
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -65,19 +61,19 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             this.Invalidate(false);
 
-            if(keyPlayer == KeyMove.up)
+            if((keyPlayer & KeyMove.up) == KeyMove.up)
             {
                 p1.MoveY(UpOrDown);
             }
-            if(keyPlayer == KeyMove.down)
+            if((keyPlayer & KeyMove.down) == KeyMove.down)
             {
                 p1.MoveY(UpOrDown);
             }
-            if (keyPlayer == KeyMove.left)
+            if ((keyPlayer & KeyMove.left) == KeyMove.left)
             {
                 p1.MoveX(LeftOrRight);
             }
-            if (keyPlayer == KeyMove.right)
+            if ((keyPlayer & KeyMove.right) == KeyMove.right)
             {
                 p1.MoveX(LeftOrRight);
             }
