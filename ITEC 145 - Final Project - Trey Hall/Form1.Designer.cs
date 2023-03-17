@@ -36,7 +36,8 @@
             // 
             // picPlayer
             // 
-            this.picPlayer.Location = new System.Drawing.Point(335, 186);
+            this.picPlayer.BackColor = System.Drawing.Color.MistyRose;
+            this.picPlayer.Location = new System.Drawing.Point(701, 328);
             this.picPlayer.Name = "picPlayer";
             this.picPlayer.Size = new System.Drawing.Size(87, 110);
             this.picPlayer.TabIndex = 0;
@@ -44,6 +45,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
