@@ -34,6 +34,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
         //Properties
         public int Xspeed { get { return _xSpeed; } }
         public int Yspeed { get { return _ySpeed; } }
+        public int X { get { return _x; } }
+        public int Y { get { return _y; } }
+        public int Height { get { return _height; } }
+        public int Width { get { return _width; } }
 
 
         //Methods

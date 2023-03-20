@@ -37,9 +37,9 @@
             // picPlayer
             // 
             this.picPlayer.BackColor = System.Drawing.Color.MistyRose;
-            this.picPlayer.Location = new System.Drawing.Point(701, 328);
+            this.picPlayer.Location = new System.Drawing.Point(724, 339);
             this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(87, 110);
+            this.picPlayer.Size = new System.Drawing.Size(88, 110);
             this.picPlayer.TabIndex = 0;
             this.picPlayer.TabStop = false;
             // 
@@ -52,7 +52,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(824, 461);
             this.Controls.Add(this.picPlayer);
             this.Name = "Form1";
             this.Text = "Form1";

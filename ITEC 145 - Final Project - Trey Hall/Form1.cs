@@ -3,6 +3,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
     public partial class Form1 : Form
     {
         Player p1;
+        Zombie z1;
 
         bool UpOrDown;
         bool LeftOrRight;
@@ -20,6 +21,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.UserPaint, true);
 
             p1 = new Player(155, 155);
+            z1 = new Zombie(200, 200);
 
             timer1.Enabled = true;
         }
@@ -66,6 +68,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             p1.Draw(e.Graphics);
+            z1.Draw(e.Graphics);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
