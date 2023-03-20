@@ -28,17 +28,17 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             switch(e.KeyData)
             {
-                case Keys.A:
-                    p1 |= KeyMove.left;
-                    break;
-                case Keys.D:
-                    p1 |= KeyMove.right;
-                    break;
                 case Keys.W:
-                    p1 |= KeyMove.up;
+                    keyPlayer |= KeyMove.up;
                     break;
                 case Keys.S:
-                    p1 |= KeyMove.down;
+                    keyPlayer |= KeyMove.down;
+                    break;
+                case Keys.A:
+                    keyPlayer |= KeyMove.left;
+                    break;
+                case Keys.D:
+                    keyPlayer |= KeyMove.right;
                     break;
             }
             
@@ -46,10 +46,21 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.W) keyPlayer = KeyMove.none;
-            else if (e.KeyCode == Keys.S) keyPlayer = KeyMove.none;
-            else if (e.KeyCode == Keys.A) keyPlayer = KeyMove.none;
-            else if (e.KeyCode == Keys.D) keyPlayer = KeyMove.none;
+            switch (e.KeyData)
+            {
+                case Keys.W:
+                    keyPlayer &= ~KeyMove.up;
+                    break;
+                case Keys.S:
+                    keyPlayer &= ~KeyMove.down;
+                    break;
+                case Keys.A:
+                    keyPlayer &= ~KeyMove.left;
+                    break;
+                case Keys.D:
+                    keyPlayer &= ~KeyMove.right;
+                    break;
+            }
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -63,18 +74,22 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             if((keyPlayer & KeyMove.up) == KeyMove.up)
             {
+                UpOrDown = true;
                 p1.MoveY(UpOrDown);
             }
             if((keyPlayer & KeyMove.down) == KeyMove.down)
             {
+                UpOrDown = false;
                 p1.MoveY(UpOrDown);
             }
             if ((keyPlayer & KeyMove.left) == KeyMove.left)
             {
+                LeftOrRight = true;
                 p1.MoveX(LeftOrRight);
             }
             if ((keyPlayer & KeyMove.right) == KeyMove.right)
             {
+                LeftOrRight = false;
                 p1.MoveX(LeftOrRight);
             }
         }
