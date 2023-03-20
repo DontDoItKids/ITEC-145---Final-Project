@@ -14,8 +14,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _x;
         private int _y;
 
-        private int _xSpeed = 10;
-        private int _ySpeed = 10;
+        private int _xSpeed = 5;
+        private int _ySpeed = 5;
 
         private int _height = 30;
         private int _width = 30;

@@ -95,6 +95,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 LeftOrRight = false;
                 p1.MoveX(LeftOrRight);
             }
+
+            z1.MoveToPlayer(p1.X, p1.Y, p1.Width, p1.Height);
         }
 
     }
