@@ -20,7 +20,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
-            p1 = new Player(155, 155);
+            p1 = new Player(156, 156);
             z1 = new Zombie(200, 200);
 
             timer1.Enabled = true;

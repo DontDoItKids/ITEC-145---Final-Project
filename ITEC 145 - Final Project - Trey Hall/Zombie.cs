@@ -14,8 +14,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _centerX;
         private int _centerY;
 
-        private int _xSpeed = 4;
-        private int _ySpeed = 4;
+        private int _xSpeed = 3;
+        private int _ySpeed = 3;
 
         private int _height = 30;
         private int _width = 30;
@@ -30,8 +30,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             _brush = new SolidBrush(Color.PaleGreen);
 
-            _centerX = X + (Height / 2);
-            _centerY = Y + (Width / 2);
         }
 
         //Properties
@@ -49,26 +47,29 @@ namespace ITEC_145___Final_Project___Trey_Hall
         //Method to determine a location and move towards it. A location being the player.
         public void MoveToPlayer(int xP, int yP, int widthP, int heightP)
         {
-            int playerCenterX = xP + (heightP / 2);
-            int playerCenterY = yP + (widthP / 2);
+            _centerX = X + (Width / 2);
+            _centerY = Y + (Height / 2);
+
+            int playerCenterX = xP + (widthP / 2);
+            int playerCenterY = yP + (heightP / 2);
 
             if(_centerX > playerCenterX)
             {
-                _x += _xSpeed;
-            }
-            if(_centerX < playerCenterX)
-            {
                 _x -= _xSpeed;
             }
+            else if(_centerX < playerCenterX)
+            {
+                _x += _xSpeed;
+            }
 
-            //if(_centerY < playerCenterY)
-            //{
-            //    _y += _ySpeed;
-            //}
-            //else if(_centerY > playerCenterY)
-            //{
-            //    _y -= _ySpeed;
-            //}
+            if (_centerY < playerCenterY)
+            {
+                _y += _ySpeed;
+            }
+            else if (_centerY > playerCenterY)
+            {
+                _y -= _ySpeed;
+            }
 
         }
 
