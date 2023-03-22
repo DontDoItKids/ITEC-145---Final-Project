@@ -25,6 +25,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private Point _centreLoc;
 
         //Properties
+        public Point CentreLoc { get { return _centreLoc; } set { _centreLoc = value; } }
         public int Xspeed { get { return _xSpeed; } }
         public int Yspeed { get { return _ySpeed; } }
         public int X { get { return _x; } }

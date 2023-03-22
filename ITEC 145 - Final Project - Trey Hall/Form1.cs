@@ -104,6 +104,12 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 p1.MoveX(LeftOrRight);
             }
 
+            //Lets figure out the centre point for the Player
+            Point point = new Point(p1.X + (p1.Width / 2), p1.Y +(p1.Height / 2));
+            p1.CentreLoc = point;
+
+
+
             //Switching between the two modes of zombie movement. Might move to a seperate timer.
             movement = rnd.Next();
             if(movement % 2 == 0)
@@ -121,6 +127,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             //label1.Text = $"X = {mouseX} Y = {mouseY}";
 
+            //Is the mouse move event a better place for this?
+            //Probably cause then it fires every time the mouse moves not every time tick.
+            //Oh well it stays here for now.
             mouseLoc = this.PointToClient(Cursor.Position);
             label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y}";
 
