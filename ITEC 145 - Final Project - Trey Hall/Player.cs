@@ -22,14 +22,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private Brush _brush;
 
-        //Constructor make it take a file path for the image
-        public Player(int x, int y)
-        {
-            _x = x;
-            _y = y;
-
-            _brush = new SolidBrush(Color.Black);
-        }
+        private Point _centreLoc;
 
         //Properties
         public int Xspeed { get { return _xSpeed; } }
@@ -39,6 +32,14 @@ namespace ITEC_145___Final_Project___Trey_Hall
         public int Height { get { return _height; } }
         public int Width { get { return _width; } }
 
+        //Constructor make it take a file path for the image
+        public Player(int x, int y)
+        {
+            _x = x;
+            _y = y;
+
+            _brush = new SolidBrush(Color.Black);
+        }
 
         //Methods
         public void Draw(Graphics gr)

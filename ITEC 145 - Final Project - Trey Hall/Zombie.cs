@@ -8,6 +8,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
 {
     internal class Zombie
     {
+        //Have the the top and left sides of the screen blocked off and zombies come from the bottom and right
+
         //Fields
         private int _x;
         private int _y;
@@ -22,6 +24,15 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private Brush _brush;
 
+        private Random _rnd;
+
+        //Properties
+        public int X { get { return _x; } }
+        public int Y { get { return _y; } }
+        public int Height { get { return _height; } }
+        public int Width { get { return _width; } }
+
+
         //Constructor
         public Zombie(int x, int y)
         {
@@ -31,12 +42,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             _brush = new SolidBrush(Color.PaleGreen);
 
         }
-
-        //Properties
-        public int X { get { return _x; } }
-        public int Y { get { return _y; } }
-        public int Height { get { return _height; } }
-        public int Width { get { return _width; } }
 
 
         //Methods
@@ -75,8 +80,43 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         public void MoveRandom()
         {
+            _rnd = new Random();
+            int xOrY = _rnd.Next();
+            int uOrD = _rnd.Next();
+            int lOrR = _rnd.Next();
+
+            if(xOrY % 2 == 0)
+            {
+                if (uOrD % 2 == 0)
+                {
+                    _x -= _xSpeed;
+                }
+
+                else if (uOrD % 2 != 0)
+                {
+                    _x += _xSpeed;
+                }
+            }
+
+            if(xOrY % 2 != 0)
+            {
+                if (lOrR % 2 == 0)
+                {
+                    _y -= _ySpeed;
+                }
+
+                else if (lOrR % 2 != 0)
+                {
+                    _y += _ySpeed;
+                }
+            }
+        }
+        //In the form could randomly switch between the two move methods
+
+        private void Die()
+        {
 
         }
-        //In the form could randomlly switch between the two move methods
+
     }
 }

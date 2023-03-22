@@ -4,9 +4,17 @@ namespace ITEC_145___Final_Project___Trey_Hall
     {
         Player p1;
         Zombie z1;
-
+        //https://stackoverflow.com/questions/55010535/c-sharp-finding-angle-between-2-given-points
         bool UpOrDown;
         bool LeftOrRight;
+
+        Random rnd = new Random();
+        int movement;
+
+        //int mouseX;
+        //int mouseY;
+
+        Point mouseLoc;
 
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
@@ -21,7 +29,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.UserPaint, true);
 
             p1 = new Player(156, 156);
-            z1 = new Zombie(200, 200);
+            z1 = new Zombie(0, 0);
 
             timer1.Enabled = true;
         }
@@ -96,7 +104,26 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 p1.MoveX(LeftOrRight);
             }
 
-            z1.MoveToPlayer(p1.X, p1.Y, p1.Width, p1.Height);
+            //Switching between the two modes of zombie movement. Might move to a seperate timer.
+            movement = rnd.Next();
+            if(movement % 2 == 0)
+            {
+                z1.MoveToPlayer(p1.X, p1.Y, p1.Width, p1.Height);
+            }
+
+            else if (movement % 2 != 0)
+            {
+                z1.MoveRandom();
+            }
+
+            //mouseX = MousePosition.X;
+            //mouseY = MousePosition.Y;
+
+            //label1.Text = $"X = {mouseX} Y = {mouseY}";
+
+            mouseLoc = this.PointToClient(Cursor.Position);
+            label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y}";
+
         }
 
     }
