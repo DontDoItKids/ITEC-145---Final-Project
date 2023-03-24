@@ -31,11 +31,14 @@ namespace ITEC_145___Final_Project___Trey_Hall
         }
         //Need to figure out mouse location and than shoot in that direction
         //Methods
-        public void Shoot(Point mLoc, int playerCX, int playerCY )
+        public void Shoot(Point mLoc, Point player )
         {
             //find mouse location !
             //almost draw a line from the center of the player to that point
             //fire in that direction
+            
+            //Draw the damn bullet
+            //Use translate? If that exists.
         }
 
     }

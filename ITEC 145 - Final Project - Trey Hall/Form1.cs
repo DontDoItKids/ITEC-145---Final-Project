@@ -11,10 +11,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         Random rnd = new Random();
         int movement;
 
-        //int mouseX;
-        //int mouseY;
-
         Point mouseLoc;
+        Point playerLoc;
 
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
@@ -105,16 +103,15 @@ namespace ITEC_145___Final_Project___Trey_Hall
             }
 
             //Lets figure out the centre point for the Player
-            Point point = new Point(p1.X + (p1.Width / 2), p1.Y +(p1.Height / 2));
-            p1.CentreLoc = point;
-
+            playerLoc = new Point(p1.X + (p1.Width / 2), p1.Y + (p1.Height / 2));
+            p1.CentreLoc = playerLoc;
 
 
             //Switching between the two modes of zombie movement. Might move to a seperate timer.
             movement = rnd.Next();
             if(movement % 2 == 0)
             {
-                z1.MoveToPlayer(p1.X, p1.Y, p1.Width, p1.Height);
+                z1.MoveToPlayer(playerLoc, p1.Width, p1.Height);
             }
 
             else if (movement % 2 != 0)
@@ -122,18 +119,69 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 z1.MoveRandom();
             }
 
-            //mouseX = MousePosition.X;
-            //mouseY = MousePosition.Y;
-
-            //label1.Text = $"X = {mouseX} Y = {mouseY}";
 
             //Is the mouse move event a better place for this?
             //Probably cause then it fires every time the mouse moves not every time tick.
             //Oh well it stays here for now.
             mouseLoc = this.PointToClient(Cursor.Position);
-            label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y}";
+            label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
 
         }
+
+
+
+
+
+
+        //Thinking Space
+
+        //Point X(250, 250)
+        //Point Y(300, 300)
+
+        //difference of(50, 50)
+
+        //So to get to from x to Y
+        //Redraw the bullet at incremental points ie.
+        //(251, 251)
+        //(252, 252)
+        //(253, 253) etc.
+
+        //Need to figure out the math to do this.
+        //How to get the value to increment by.
+
+        //Point Player (712, 159)
+        //Point Mouse(257, 129)
+
+        //To Figure out the difference do 
+        //Player.x - Mouse.X = diffX = 455
+        //Player.Y - Mouse.Y = diffY = 30
+
+        //Divde X by the Y to figure out how much to move 455 / 30 = 15.16
+
+        //So move 15 X and 1 Y each increment.
+        //Might be Better to figure out Which is the bigger number.
+        //Have too actually otherwise due to rounding X could end up being 0.
+
+        //if (diffX > diffY)
+        //{
+        //	diffX / diffY = moveX
+        //    moveY = 1
+        //}
+
+        //if (diffX<diffY)
+        //{
+        //	diffY / diffX = moveY
+        //    moveX = 1
+        //}
+
+        //if (diffX = diffY)
+        //{
+        //    moveX = 1
+
+        //    moveY = 1
+        //}
+
+
 
     }
 }
