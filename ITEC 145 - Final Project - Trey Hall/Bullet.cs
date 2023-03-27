@@ -15,8 +15,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _xSpeed;
         private int _ySpeed;
 
-        private int _height = 30;
-        private int _width = 30;
+        private int _height = 22;
+        private int _width = 15;
 
         private Brush _brush;
 
@@ -27,19 +27,28 @@ namespace ITEC_145___Final_Project___Trey_Hall
         //Constructor
         public Bullet()
         {
-            
+            _brush = new SolidBrush(Color.Orange);
         }
-        //Need to figure out mouse location and than shoot in that direction
+
         //Methods
-        public void Shoot(Point mLoc, Point player )
+        public void Shoot(Graphics gr, Point mLoc, Point player)
         {
             //find mouse location !
             //almost draw a line from the center of the player to that point
             //fire in that direction
-            
+
             //Draw the damn bullet
-            //Use translate? If that exists.
+
+            try
+            {
+                gr.FillEllipse(_brush, player.X, player.Y, 20, 20);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
     }
+
 }

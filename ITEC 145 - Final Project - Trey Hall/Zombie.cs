@@ -42,7 +42,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             _y = y;
 
             _brush = new SolidBrush(Color.PaleGreen);
-
         }
 
 
@@ -52,7 +51,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             gr.FillEllipse(_brush, _x, _y, _width, _height);
         }
         //Method to determine a location and move towards it. A location being the player.
-        public void MoveToPlayer(Point pointP, int widthP, int heightP)
+        public void MoveToPlayer(Point pointP)
         {
             _centerX = X + (Width / 2);
             _centerY = Y + (Height / 2);

@@ -1,12 +1,19 @@
+using System.Drawing;
+using System.Drawing.Drawing2D;
+
 namespace ITEC_145___Final_Project___Trey_Hall
 {
     public partial class Form1 : Form
     {
         Player p1;
         Zombie z1;
+        Bullet b1;
+        //List<Bullet> bullets = new List<Bullet>;
         //https://stackoverflow.com/questions/55010535/c-sharp-finding-angle-between-2-given-points
         bool UpOrDown;
         bool LeftOrRight;
+
+        Graphics gfx;
 
         Random rnd = new Random();
         int movement;
@@ -26,8 +33,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
+            //g1 = new Graphics;
             p1 = new Player(156, 156);
             z1 = new Zombie(0, 0);
+            b1 = new Bullet();
 
             timer1.Enabled = true;
         }
@@ -73,8 +82,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            p1.Draw(e.Graphics);
-            z1.Draw(e.Graphics);
+            gfx = e.Graphics;
+            p1.Draw(gfx);
+            z1.Draw(gfx);
+            b1.Shoot(gfx, mouseLoc, playerLoc);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -111,7 +122,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             movement = rnd.Next();
             if(movement % 2 == 0)
             {
-                z1.MoveToPlayer(playerLoc, p1.Width, p1.Height);
+                z1.MoveToPlayer(playerLoc);
             }
 
             else if (movement % 2 != 0)
@@ -119,13 +130,16 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 z1.MoveRandom();
             }
 
-
-            //Is the mouse move event a better place for this?
-            //Probably cause then it fires every time the mouse moves not every time tick.
-            //Oh well it stays here for now.
             mouseLoc = this.PointToClient(Cursor.Position);
             label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
+        }
 
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                b1.Shoot(gfx, mouseLoc, playerLoc);
+            }
         }
 
 
@@ -152,7 +166,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         //Point Player (712, 159)
         //Point Mouse(257, 129)
 
-        //To Figure out the difference do 
+        //To Figure out the difference
         //Player.x - Mouse.X = diffX = 455
         //Player.Y - Mouse.Y = diffY = 30
 
@@ -164,24 +178,22 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         //if (diffX > diffY)
         //{
-        //	diffX / diffY = moveX
-        //    moveY = 1
+        //	diffX / diffY = moveX or XSpeed
+        //  moveY = 1
         //}
 
         //if (diffX<diffY)
         //{
-        //	diffY / diffX = moveY
-        //    moveX = 1
+        //	diffY / diffX = moveY or YSpeed
+        //  moveX = 1
         //}
 
         //if (diffX = diffY)
         //{
-        //    moveX = 1
+        //  moveX = 1
 
-        //    moveY = 1
+        //  moveY = 1
         //}
-
-
 
     }
 }
