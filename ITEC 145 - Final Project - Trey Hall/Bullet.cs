@@ -49,6 +49,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             }
         }
 
+        //add bullets to a list and then have in the paint event draw if there is any?  
     }
 
 }

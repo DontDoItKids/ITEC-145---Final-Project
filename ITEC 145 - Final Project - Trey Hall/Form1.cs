@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.Intrinsics.X86;
 
 namespace ITEC_145___Final_Project___Trey_Hall
 {
@@ -7,8 +8,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
     {
         Player p1;
         Zombie z1;
-        Bullet b1;
-        //List<Bullet> bullets = new List<Bullet>;
+        
+        List<Bullet> bullets = new List<Bullet>();
         //https://stackoverflow.com/questions/55010535/c-sharp-finding-angle-between-2-given-points
         bool UpOrDown;
         bool LeftOrRight;
@@ -33,10 +34,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
-            //g1 = new Graphics;
+            
             p1 = new Player(156, 156);
             z1 = new Zombie(0, 0);
-            b1 = new Bullet();
+            
 
             timer1.Enabled = true;
         }
@@ -85,7 +86,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             gfx = e.Graphics;
             p1.Draw(gfx);
             z1.Draw(gfx);
-            b1.Shoot(gfx, mouseLoc, playerLoc);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -138,7 +138,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             if (e.Button == MouseButtons.Left)
             {
-                b1.Shoot(gfx, mouseLoc, playerLoc);
+                Bullet b1 = new Bullet();
+                bullets.Add(b1);
             }
         }
 
