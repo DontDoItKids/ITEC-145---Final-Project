@@ -26,6 +26,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         public Form1()
         {
             InitializeComponent();
+
             Player.mainForm = this;
             Bullet.mainForm = this;
 
@@ -155,59 +156,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 bullets.Add(b1);
             }
         }
-
-
-
-
-
-
-        //Thinking Space
-
-        //Point X(250, 250)
-        //Point Y(300, 300)
-
-        //difference of(50, 50)
-
-        //So to get to from x to Y
-        //Redraw the bullet at incremental points ie.
-        //(251, 251)
-        //(252, 252)
-        //(253, 253) etc.
-
-        //Need to figure out the math to do this.
-        //How to get the value to increment by.
-
-        //Point Player (712, 159)
-        //Point Mouse(257, 129)
-
-        //To Figure out the difference
-        //Player.x - Mouse.X = diffX = 455
-        //Player.Y - Mouse.Y = diffY = 30
-
-        //Divde X by the Y to figure out how much to move 455 / 30 = 15.16
-
-        //So move 15 X and 1 Y each increment.
-        //Might be Better to figure out Which is the bigger number.
-        //Have too actually otherwise due to rounding X could end up being 0.
-
-        //if (diffX > diffY)
-        //{
-        //	diffX / diffY = moveX or XSpeed
-        //  moveY = 1
-        //}
-
-        //if (diffX<diffY)
-        //{
-        //	diffY / diffX = moveY or YSpeed
-        //  moveX = 1
-        //}
-
-        //if (diffX = diffY)
-        //{
-        //  moveX = 1
-
-        //  moveY = 1
-        //}
 
     }
 }

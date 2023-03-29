@@ -104,33 +104,14 @@ namespace ITEC_145___Final_Project___Trey_Hall
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
 
-            if (_x < 0)
-            {
-                timer.Stop();
-                timer.Dispose();
-            }
-            if (_y < 0)
-            {
-                timer.Stop();
-                timer.Dispose();
-            }
-            if(_x > mainForm.ClientSize.Width)
-            {
-                timer.Stop();
-                timer.Dispose();
-            }
-            if (_y > mainForm.ClientSize.Height)
-            {
-                timer.Stop();
-                timer.Dispose();
-            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             _x += _xSpeed;
-            _y += _ySpeed;
+            _y += _ySpeed;     
         }
+
     }
 
 }
