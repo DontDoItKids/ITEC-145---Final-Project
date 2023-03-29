@@ -29,20 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.picPlayer = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             this.SuspendLayout();
-            // 
-            // picPlayer
-            // 
-            this.picPlayer.BackColor = System.Drawing.Color.MistyRose;
-            this.picPlayer.Location = new System.Drawing.Point(724, 339);
-            this.picPlayer.Name = "picPlayer";
-            this.picPlayer.Size = new System.Drawing.Size(88, 110);
-            this.picPlayer.TabIndex = 0;
-            this.picPlayer.TabStop = false;
             // 
             // timer1
             // 
@@ -64,22 +53,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 461);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.picPlayer);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
-            ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private PictureBox picPlayer;
         private System.Windows.Forms.Timer timer1;
         private Label label1;
     }

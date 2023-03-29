@@ -14,8 +14,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
         bool UpOrDown;
         bool LeftOrRight;
 
-        Graphics gfx;
-
         Random rnd = new Random();
         int movement;
 
@@ -29,6 +27,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             InitializeComponent();
             Player.mainForm = this;
+            Bullet.mainForm = this;
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
@@ -83,9 +82,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            gfx = e.Graphics;
-            p1.Draw(gfx);
-            z1.Draw(gfx);
+            p1.Draw(e.Graphics);
+            z1.Draw(e.Graphics);
+
+            foreach(Bullet b in bullets)
+            {
+                b.Shoot(e.Graphics);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -130,6 +133,16 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 z1.MoveRandom();
             }
 
+            //Getting rid of the bullets that go off screen
+            foreach(Bullet b in bullets)
+            {
+                if (b.X < 0)
+                {
+                    
+                }
+            }
+
+            //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
             label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
         }
@@ -138,7 +151,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             if (e.Button == MouseButtons.Left)
             {
-                Bullet b1 = new Bullet();
+                Bullet b1 = new Bullet(mouseLoc, playerLoc);
                 bullets.Add(b1);
             }
         }
