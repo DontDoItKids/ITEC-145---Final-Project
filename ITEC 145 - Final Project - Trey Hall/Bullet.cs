@@ -17,8 +17,11 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _xSpeed;
         private int _ySpeed;
 
-        private int _diffX;
-        private int _diffY;
+        private double _tempX;
+        private double _tempY;
+
+        private double _diffX;
+        private double _diffY;
 
         private int _height = 5;
         private int _width = 5;
@@ -46,50 +49,135 @@ namespace ITEC_145___Final_Project___Trey_Hall
             {
                 if (_diffX > _diffY)
                 {
-                    _xSpeed = _diffX / _diffY;
-                    _xSpeed *= -1;
-                    _ySpeed = -1;
-                }
+                    _tempX = _diffX / _diffY;
+                    //_xSpeed *= -1;
+                    _ySpeed = 1;
 
-                if (_diffX < _diffY)
+                    if (_tempX < 0 && _tempX > -1)
+                    {
+                        _xSpeed = -1;
+                    }
+                    else if (_tempX > 0 && _tempX < 1)
+                    {
+                        _xSpeed = 1;
+                    }
+                    else
+                    {
+                        _xSpeed = (int)_tempX;
+                    }
+
+                }
+                else if (_diffX < _diffY)
                 {
-                    _ySpeed = _diffY / _diffX;
-                    _ySpeed *= -1;
+                    _tempY = _diffY / _diffX;
+                    //_ySpeed *= -1;
                     _xSpeed = -1;
+
+                    if (_tempY < 0 && _tempY > -1)
+                    {
+                        _ySpeed = -1;
+                    }
+                    else if (_tempY > 0 && _tempY < 1)
+                    {
+                        _ySpeed = 1;
+                    }
+                    else
+                    {
+                        _ySpeed = (int)_tempY;
+                    }
+
                 }
 
             }
 
-            if (_diffX > _diffY)
+            else if (_diffX > _diffY)
             {
                 if (_diffY < 0)
                 {
-                    _xSpeed = _diffX / _diffY;
+                    _tempX = _diffX / _diffY;
+                    _ySpeed = 1;
+
+                    if (_tempX < 0 && _tempX > -1)
+                    {
+                        _xSpeed = -1;
+                    }
+                    else if (_tempX > 0 && _tempX < 1)
+                    {
+                        _xSpeed = 1;
+                    }
+                    else
+                    {
+                        _xSpeed = (int)_tempX;
+                    }
+
                     _xSpeed *= -1;
-                    _ySpeed = -1;
+
                 }
                 else
                 {
-                    _xSpeed = _diffX / _diffY;
-                    _xSpeed *= -1;
-                    _ySpeed = 1;
+                    _tempX = _diffX / _diffY;
+                    //_xSpeed *= -1;
+                    _ySpeed = -1;
+
+                    if (_tempX < 0 && _tempX > -1)
+                    {
+                        _xSpeed = -1;
+                    }
+                    else if (_tempX > 0 && _tempX < 1)
+                    {
+                        _xSpeed = 1;
+                    }
+                    else
+                    {
+                        _xSpeed = (int)_tempX;
+                    }
+
                 }
 
             }
 
-            if (_diffX < _diffY)
+            else if (_diffX < _diffY)
             {
                 if (_diffX < 0)
                 {
-                    _ySpeed = _diffY / _diffX;
+                    _tempY = _diffY / _diffX;
+                    _xSpeed = 1;
+
+                    if (_tempY < 0 && _tempY > -1)
+                    {
+                        _ySpeed = -1;
+                    }
+                    else if (_tempY > 0 && _tempY < 1)
+                    {
+                        _ySpeed = 1;
+                    }
+                    else
+                    {
+                        _ySpeed = (int)_tempY;
+                    }
+
                     _ySpeed *= -1;
-                    _xSpeed = -1;
+
                 }
                 else
                 {
-                    _ySpeed = _diffY / _diffX;
-                    _ySpeed *= -1;
-                    _xSpeed = 1;
+                    _tempY = _diffY / _diffX;
+                    //_ySpeed *= -1;
+                    _xSpeed = -1;
+
+                    if (_tempY < 0 && _tempY > -1)
+                    {
+                        _ySpeed = -1;
+                    }
+                    else if (_tempY > 0 && _tempY < 1)
+                    {
+                        _ySpeed = 1;
+                    }
+                    else
+                    {
+                        _ySpeed = (int)_tempY;
+                    }
+
                 }
             }
         }
