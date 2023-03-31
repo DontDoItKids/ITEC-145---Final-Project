@@ -42,8 +42,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
             _x = player.X;
             _y = player.Y;
 
-            _diffX = player.X - mLoc.X;
-            _diffY = player.Y - mLoc.Y;
+            _diffX = mLoc.X - player.X;
+            _diffY = mLoc.Y - player.Y;
 
             if (_diffX < 0 && _diffY < 0)
             {
@@ -70,7 +70,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 else if (_diffX < _diffY)
                 {
                     _tempY = _diffY / _diffX;
-                    //_ySpeed *= -1;
                     _xSpeed = -1;
 
                     if (_tempY < 0 && _tempY > -1)
@@ -86,6 +85,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
                         _ySpeed = (int)_tempY;
                     }
 
+                    _ySpeed *= -1;
+
                 }
 
             }
@@ -95,7 +96,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 if (_diffY < 0)
                 {
                     _tempX = _diffX / _diffY;
-                    _ySpeed = 1;
+                    _ySpeed = -1;
 
                     if (_tempX < 0 && _tempX > -1)
                     {
@@ -117,7 +118,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 {
                     _tempX = _diffX / _diffY;
                     //_xSpeed *= -1;
-                    _ySpeed = -1;
+                    _ySpeed = 1;
 
                     if (_tempX < 0 && _tempX > -1)
                     {
@@ -141,7 +142,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 if (_diffX < 0)
                 {
                     _tempY = _diffY / _diffX;
-                    _xSpeed = 1;
+                    _xSpeed = -1;
 
                     if (_tempY < 0 && _tempY > -1)
                     {
@@ -163,15 +164,19 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 {
                     _tempY = _diffY / _diffX;
                     //_ySpeed *= -1;
-                    _xSpeed = -1;
+                    _xSpeed = 1;
 
-                    if (_tempY < 0 && _tempY > -1)
+                    if (_tempY <= -0.75 && _tempY > -1)
                     {
                         _ySpeed = -1;
                     }
-                    else if (_tempY > 0 && _tempY < 1)
+                    else if (_tempY >= 0.75 && _tempY < 1)
                     {
                         _ySpeed = 1;
+                    }
+                    else if(_tempY > -0.75 && _tempY < 0.75)
+                    {
+                        _ySpeed = 0;
                     }
                     else
                     {
