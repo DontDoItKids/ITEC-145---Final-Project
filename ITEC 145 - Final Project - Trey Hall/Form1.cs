@@ -137,9 +137,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
             //Getting rid of the bullets that go off screen
             foreach(Bullet b in bullets)
             {
-                if (b.X < 0)
+                if (b.X < 0 || b.Y < 0 || b.X > ClientSize.Width || b.Y > ClientSize.Height)
                 {
-                    
+                   bullets.Remove(b);
                 }
             }
 

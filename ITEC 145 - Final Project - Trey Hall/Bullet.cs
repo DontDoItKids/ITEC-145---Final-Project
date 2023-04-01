@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ITEC_145___Final_Project___Trey_Hall
 {
@@ -196,13 +197,12 @@ namespace ITEC_145___Final_Project___Trey_Hall
             timer.Interval = 1000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
-
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             _x += _xSpeed;
-            _y += _ySpeed;     
+            _y += _ySpeed;
         }
 
     }
