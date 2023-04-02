@@ -66,7 +66,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 {
                     _y = mainForm.ClientSize.Height - _height;
                 }
-
             }
         }
 
@@ -88,11 +87,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 {
                     _x = mainForm.ClientSize.Width - _width;
                 }
-
             }
-
         }
-
     }
-
 }

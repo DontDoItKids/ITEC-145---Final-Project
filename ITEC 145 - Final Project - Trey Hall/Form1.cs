@@ -32,9 +32,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
-
             p1 = new Player(156, 156);
-
 
             timer1.Enabled = true;
             ZombieSpawn.Enabled = true;
