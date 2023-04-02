@@ -7,9 +7,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
     public partial class Form1 : Form
     {
         Player p1;
-        Zombie z1;
-        
+
         List<Bullet> bullets = new List<Bullet>();
+        List<Zombie> zombies = new List<Zombie>();
         //https://stackoverflow.com/questions/55010535/c-sharp-finding-angle-between-2-given-points
         bool UpOrDown;
         bool LeftOrRight;
@@ -26,22 +26,23 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             Player.mainForm = this;
             Bullet.mainForm = this;
+            Zombie.mainForm = this;
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
-            
+
             p1 = new Player(156, 156);
-            z1 = new Zombie();
-            
+
 
             timer1.Enabled = true;
+            ZombieSpawn.Enabled = true;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch(e.KeyData)
+            switch (e.KeyData)
             {
                 case Keys.W:
                     keyPlayer |= KeyMove.up;
@@ -56,7 +57,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     keyPlayer |= KeyMove.right;
                     break;
             }
-            
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -81,9 +82,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             p1.Draw(e.Graphics);
-            z1.Spawn(e.Graphics, 0, 0);
 
-            foreach(Bullet b in bullets)
+            foreach (Zombie z in zombies)
+            {
+                z.Spawn(e.Graphics);
+            }
+
+            foreach (Bullet b in bullets)
             {
                 b.Shoot(e.Graphics);
             }
@@ -93,12 +98,12 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             this.Invalidate(false);
 
-            if((keyPlayer & KeyMove.up) == KeyMove.up)
+            if ((keyPlayer & KeyMove.up) == KeyMove.up)
             {
                 UpOrDown = true;
                 p1.MoveY(UpOrDown);
             }
-            if((keyPlayer & KeyMove.down) == KeyMove.down)
+            if ((keyPlayer & KeyMove.down) == KeyMove.down)
             {
                 UpOrDown = false;
                 p1.MoveY(UpOrDown);
@@ -129,8 +134,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     }
                 }
             }
-            catch
-            { }
+            catch { }
 
             //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
@@ -146,5 +150,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
             }
         }
 
+        private void ZombieSpawn_Tick(object sender, EventArgs e)
+        {
+            Zombie Zom = new Zombie(0, 0);
+            zombies.Add(Zom);
+        }
     }
 }

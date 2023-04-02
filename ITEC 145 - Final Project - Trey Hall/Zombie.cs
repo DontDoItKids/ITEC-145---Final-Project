@@ -40,16 +40,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
 
         //Constructor
-        public Zombie()
+        public Zombie(int x, int y)
         {
             _brush = new SolidBrush(Color.PaleGreen);
-        }
-
-
-        //Methods
-        public void Spawn(Graphics gr, int x, int y)
-        {
-            gr.FillEllipse(_brush, _x, _y, _width, _height);
 
             _x = x;
             _y = y;
@@ -57,6 +50,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
             timer.Interval = 20;
+        }
+
+
+        //Methods
+        public void Spawn(Graphics gr)
+        {
+            gr.FillEllipse(_brush, _x, _y, _width, _height);
         }
         //Method to determine a location and move towards it. A location being the player.
         public void MoveToPlayer(Point pointP)
@@ -123,7 +123,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             timer.Stop();
             timer.Dispose();
         }
-
+        
         //Events
         private void timer_Tick(object sender, EventArgs e)
         {
