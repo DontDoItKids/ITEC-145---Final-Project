@@ -223,6 +223,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         }
 
+        //Events
         private void timer_Tick(object sender, EventArgs e)
         {
             _x += _xSpeed;

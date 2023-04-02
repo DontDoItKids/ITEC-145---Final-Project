@@ -14,11 +14,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         bool UpOrDown;
         bool LeftOrRight;
 
-        Random rnd = new Random();
-        int movement;
-
-        Point mouseLoc;
-        Point playerLoc;
+        public Point mouseLoc;
+        public Point playerLoc;
 
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
@@ -36,7 +33,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             
             p1 = new Player(156, 156);
-            z1 = new Zombie(0, 0);
+            z1 = new Zombie();
             
 
             timer1.Enabled = true;
@@ -84,7 +81,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             p1.Draw(e.Graphics);
-            z1.Draw(e.Graphics);
+            z1.Spawn(e.Graphics, 0, 0);
 
             foreach(Bullet b in bullets)
             {
@@ -121,21 +118,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
             playerLoc = new Point(p1.X + (p1.Width / 2), p1.Y + (p1.Height / 2));
             p1.CentreLoc = playerLoc;
 
-
-            //Switching between the two modes of zombie movement. Might move to a seperate timer.
-            movement = rnd.Next();
-            if(movement % 2 == 0)
-            {
-                z1.MoveToPlayer(playerLoc);
-            }
-
-            else if (movement % 2 != 0)
-            {
-                z1.MoveRandom();
-            }
-
             //Getting rid of the bullets that go off screen
-            try //Puttiong this in a try catch makes it work for some reason
+            try //Putting this in a try catch makes it work for some reason
             {
                 foreach (Bullet b in bullets)
                 {
@@ -144,12 +128,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
                         bullets.Remove(b);
                     }
                 }
-                
             }
             catch
-            {
-
-            }
+            { }
 
             //Debug
             mouseLoc = this.PointToClient(Cursor.Position);

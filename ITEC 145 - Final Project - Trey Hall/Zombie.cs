@@ -8,6 +8,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
 {
     internal class Zombie
     {
+        static public Form1 mainForm;
+
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
         //Have the the top and left sides of the screen blocked off and zombies come from the bottom and right
 
         //Could do an enumeration for any special properties.
@@ -18,6 +22,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _centerX;
         private int _centerY;
 
+        private Random _rnd = new Random();
+
         private int _xSpeed = 3;
         private int _ySpeed = 3;
 
@@ -25,8 +31,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _width = 30;
 
         private Brush _brush;
-
-        private Random _rnd;
 
         //Properties
         public int X { get { return _x; } }
@@ -36,19 +40,23 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
 
         //Constructor
-        public Zombie(int x, int y)
+        public Zombie()
         {
-            _x = x;
-            _y = y;
-
             _brush = new SolidBrush(Color.PaleGreen);
         }
 
 
         //Methods
-        public void Draw(Graphics gr)
+        public void Spawn(Graphics gr, int x, int y)
         {
             gr.FillEllipse(_brush, _x, _y, _width, _height);
+
+            _x = x;
+            _y = y;
+
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+            timer.Interval = 20;
         }
         //Method to determine a location and move towards it. A location being the player.
         public void MoveToPlayer(Point pointP)
@@ -78,7 +86,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         public void MoveRandom()
         {
-            _rnd = new Random();
             int xOrY = _rnd.Next();
             int uOrD = _rnd.Next();
             int lOrR = _rnd.Next();
@@ -113,8 +120,25 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void Die()
         {
-
+            timer.Stop();
+            timer.Dispose();
         }
 
+        //Events
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            //Switching between the two modes of zombie movement. Might move to a seperate timer.
+            int movement;
+            movement = _rnd.Next();
+            if (movement % 2 == 0)
+            {
+                MoveToPlayer(mainForm.playerLoc);
+            }
+
+            else if (movement % 2 != 0)
+            {
+                MoveRandom();
+            }
+        }
     }
 }
