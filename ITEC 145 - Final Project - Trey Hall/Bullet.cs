@@ -11,6 +11,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
     {
         static public Form1 mainForm;
 
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
         //Fields
         private int _x;
         private int _y;
@@ -51,21 +53,25 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 if (_diffX > _diffY)
                 {
                     _tempX = _diffX / _diffY;
-                    //_xSpeed *= -1;
-                    _ySpeed = 1;
+                    _ySpeed = -1;
 
-                    if (_tempX < 0 && _tempX > -1)
+                    if (_tempX <= -0.6 && _tempX > -1)
                     {
                         _xSpeed = -1;
                     }
-                    else if (_tempX > 0 && _tempX < 1)
+                    else if (_tempX >= 0.6 && _tempX < 1)
                     {
                         _xSpeed = 1;
+                    }
+                    else if (_tempX > -0.6 && _tempX < 0.6)
+                    {
+                        _xSpeed = 0;
                     }
                     else
                     {
                         _xSpeed = (int)_tempX;
                     }
+                    _xSpeed *= -1;
 
                 }
                 else if (_diffX < _diffY)
@@ -73,19 +79,22 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     _tempY = _diffY / _diffX;
                     _xSpeed = -1;
 
-                    if (_tempY < 0 && _tempY > -1)
+                    if (_tempY <= -0.6 && _tempY > -1)
                     {
                         _ySpeed = -1;
                     }
-                    else if (_tempY > 0 && _tempY < 1)
+                    else if (_tempY >= 0.6 && _tempY < 1)
                     {
                         _ySpeed = 1;
+                    }
+                    else if (_tempY > -0.6 && _tempY < 0.6)
+                    {
+                        _ySpeed = 0;
                     }
                     else
                     {
                         _ySpeed = (int)_tempY;
                     }
-
                     _ySpeed *= -1;
 
                 }
@@ -99,13 +108,17 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     _tempX = _diffX / _diffY;
                     _ySpeed = -1;
 
-                    if (_tempX < 0 && _tempX > -1)
+                    if (_tempX <= -0.6 && _tempX > -1)
                     {
                         _xSpeed = -1;
                     }
-                    else if (_tempX > 0 && _tempX < 1)
+                    else if (_tempX >= 0.6 && _tempX < 1)
                     {
                         _xSpeed = 1;
+                    }
+                    else if(_tempX > -0.6 && _tempX < 0.6)
+                    {
+                        _xSpeed = 0;
                     }
                     else
                     {
@@ -118,16 +131,19 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 else
                 {
                     _tempX = _diffX / _diffY;
-                    //_xSpeed *= -1;
                     _ySpeed = 1;
 
-                    if (_tempX < 0 && _tempX > -1)
+                    if (_tempX <= -0.6 && _tempX > -1)
                     {
                         _xSpeed = -1;
                     }
-                    else if (_tempX > 0 && _tempX < 1)
+                    else if (_tempX >= 0.6 && _tempX < 1)
                     {
                         _xSpeed = 1;
+                    }
+                    else if (_tempX > -0.6 && _tempX < 0.6)
+                    {
+                        _xSpeed = 0;
                     }
                     else
                     {
@@ -145,37 +161,39 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     _tempY = _diffY / _diffX;
                     _xSpeed = -1;
 
-                    if (_tempY < 0 && _tempY > -1)
+                    if (_tempY <= -0.6 && _tempY > -1)
                     {
                         _ySpeed = -1;
                     }
-                    else if (_tempY > 0 && _tempY < 1)
+                    else if (_tempY >= 0.6 && _tempY < 1)
                     {
                         _ySpeed = 1;
+                    }
+                    else if (_tempY > -0.6 && _tempY < 0.6)
+                    {
+                        _ySpeed = 0;
                     }
                     else
                     {
                         _ySpeed = (int)_tempY;
                     }
-
                     _ySpeed *= -1;
 
                 }
                 else
                 {
                     _tempY = _diffY / _diffX;
-                    //_ySpeed *= -1;
                     _xSpeed = 1;
 
-                    if (_tempY <= -0.75 && _tempY > -1)
+                    if (_tempY <= -0.6 && _tempY > -1)
                     {
                         _ySpeed = -1;
                     }
-                    else if (_tempY >= 0.75 && _tempY < 1)
+                    else if (_tempY >= 0.6 && _tempY < 1)
                     {
                         _ySpeed = 1;
                     }
-                    else if(_tempY > -0.75 && _tempY < 0.75)
+                    else if(_tempY > -0.6 && _tempY < 0.6)
                     {
                         _ySpeed = 0;
                     }
@@ -193,10 +211,16 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             gr.FillEllipse(_brush, _x, _y, _width, _height);
 
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 1000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
+            timer.Interval = 20;
+
+            if (_x < 0 || _y < 0 || _x > mainForm.ClientSize.Width || _y > mainForm.ClientSize.Height)
+            {
+                timer.Stop();
+                timer.Dispose();
+            }
+
         }
 
         private void timer_Tick(object sender, EventArgs e)

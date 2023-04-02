@@ -135,12 +135,20 @@ namespace ITEC_145___Final_Project___Trey_Hall
             }
 
             //Getting rid of the bullets that go off screen
-            foreach(Bullet b in bullets)
+            try //Puttiong this in a try catch makes it work for some reason
             {
-                if (b.X < 0 || b.Y < 0 || b.X > ClientSize.Width || b.Y > ClientSize.Height)
+                foreach (Bullet b in bullets)
                 {
-                   bullets.Remove(b);
+                    if (b.X < 0 || b.Y < 0 || b.X > ClientSize.Width || b.Y > ClientSize.Height)
+                    {
+                        bullets.Remove(b);
+                    }
                 }
+                
+            }
+            catch
+            {
+
             }
 
             //Debug
