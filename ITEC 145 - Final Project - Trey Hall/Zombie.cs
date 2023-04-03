@@ -104,6 +104,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 }
             }
 
+            // = 1 Should work perfectly but != 0 is Funnier
             if(xOrY % 2 != 0)
             {
                 if (lOrR % 2 == 0)
@@ -127,7 +128,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
         //Events
         private void timer_Tick(object sender, EventArgs e)
         {
-            //Switching between the two modes of zombie movement. Might move to a seperate timer.
             int movement;
             movement = _rnd.Next(1, 4);
             if (movement == 1 || movement == 2)

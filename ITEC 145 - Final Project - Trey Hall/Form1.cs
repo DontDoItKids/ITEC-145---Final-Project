@@ -150,6 +150,14 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 }
             } catch { }
 
+            foreach (Zombie z in zombies)
+            {
+                if (Collision(z, p1))
+                {
+                    GameOver();
+                }
+            }
+
             //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
             label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
@@ -213,5 +221,19 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             return true;
         }
+
+        private void GameOver()
+        {
+            timer1.Stop();
+            ZombieSpawn.Stop();
+
+            MessageBox.Show("You Dead");
+        }
+
+        //private void btnStart_Click(object sender, EventArgs e)
+        //{
+        //    btnStart.Enabled = false;
+        //    btnStart.Visible = false;
+        //}
     }
 }

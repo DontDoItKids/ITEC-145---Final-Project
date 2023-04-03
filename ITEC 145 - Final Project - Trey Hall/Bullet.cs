@@ -100,6 +100,11 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     _ySpeed *= -1;
 
                 }
+                else if (_diffX == _diffY)
+                {
+                    _xSpeed = -1;
+                    _ySpeed = -1;
+                }
 
             }
 
