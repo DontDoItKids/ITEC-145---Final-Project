@@ -33,9 +33,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.UserPaint, true);
 
             p1 = new Player(156, 156);
-
-            timer1.Enabled = true;
-            ZombieSpawn.Enabled = true;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -230,10 +227,16 @@ namespace ITEC_145___Final_Project___Trey_Hall
             MessageBox.Show("You Dead");
         }
 
-        //private void btnStart_Click(object sender, EventArgs e)
-        //{
-        //    btnStart.Enabled = false;
-        //    btnStart.Visible = false;
-        //}
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            btnStart.Enabled = false;
+            btnStart.Visible = false;
+
+            lblInstructions.Enabled = false;
+            lblInstructions.Visible = false;
+
+            timer1.Enabled = true;
+            ZombieSpawn.Enabled = true;
+        }
     }
 }
