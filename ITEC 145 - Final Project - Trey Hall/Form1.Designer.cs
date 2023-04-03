@@ -34,6 +34,8 @@
             this.ZombieSpawn = new System.Windows.Forms.Timer(this.components);
             this.btnStart = new System.Windows.Forms.Button();
             this.lblInstructions = new System.Windows.Forms.Label();
+            this.Clock = new System.Windows.Forms.Timer(this.components);
+            this.lblClock = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -81,11 +83,26 @@
             this.lblInstructions.TabIndex = 3;
             this.lblInstructions.Text = "W,A,S,D for Movement - Mouse to Aim and Shoot";
             // 
+            // Clock
+            // 
+            this.Clock.Interval = 1000;
+            this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
+            // 
+            // lblClock
+            // 
+            this.lblClock.AutoSize = true;
+            this.lblClock.Location = new System.Drawing.Point(387, 9);
+            this.lblClock.Name = "lblClock";
+            this.lblClock.Size = new System.Drawing.Size(34, 15);
+            this.lblClock.TabIndex = 4;
+            this.lblClock.Text = "00:00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 461);
+            this.Controls.Add(this.lblClock);
             this.Controls.Add(this.lblInstructions);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.label1);
@@ -106,5 +123,7 @@
         private System.Windows.Forms.Timer ZombieSpawn;
         private Button btnStart;
         private Label lblInstructions;
+        private System.Windows.Forms.Timer Clock;
+        private Label lblClock;
     }
 }

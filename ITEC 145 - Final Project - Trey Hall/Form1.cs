@@ -17,6 +17,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
         public Point mouseLoc;
         public Point playerLoc;
 
+        int seconds;
+        int minutes;
+
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
 
@@ -237,6 +240,26 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             timer1.Enabled = true;
             ZombieSpawn.Enabled = true;
+            Clock.Enabled = true;
+        }
+
+        private void Clock_Tick(object sender, EventArgs e)
+        {
+            seconds++;
+            if (seconds == 60)
+            {
+                minutes++;
+                seconds = 0;
+            }
+
+            if (seconds < 10)
+            {
+                lblClock.Text = $"{minutes}:0{seconds}";
+            }
+            else
+            {
+                lblClock.Text = $"{minutes}:{seconds}";
+            }
         }
     }
 }
