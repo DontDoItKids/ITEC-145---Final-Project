@@ -131,8 +131,24 @@ namespace ITEC_145___Final_Project___Trey_Hall
                         bullets.Remove(b);
                     }
                 }
-            }
-            catch { }
+            } catch { }
+
+            try //Wrapping things in try catch to make them work is not a great solution... but Oh Boy does it work.
+            {   
+                foreach (Bullet b in bullets)
+                {
+                    foreach (Zombie z in zombies)
+                    {
+                        if (Collision(z, b))
+                        {
+                            z.Die();
+                            zombies.Remove(z);
+
+                            bullets.Remove(b);
+                        }
+                    }
+                }
+            } catch { }
 
             //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
@@ -152,6 +168,50 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             Zombie Zom = new Zombie(0, 0);
             zombies.Add(Zom);
+        }
+
+        private bool Collision(Zombie zom, Bullet bul)
+        {
+            if (zom.X + zom.Width  < bul.X)
+            {
+                return false;
+            }
+            if (bul.X + bul.Width < zom.X)
+            {
+                return false;
+            }
+            if (zom.Y + zom.Height < bul.Y)
+            {
+                return false;
+            }
+            if (bul.Y + bul.Height < zom.Y)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool Collision(Zombie zom, Player ply)
+        {
+            if (zom.X + zom.Width < ply.X)
+            {
+                return false;
+            }
+            if (ply.X + ply.Width < zom.X)
+            {
+                return false;
+            }
+            if (zom.Y + zom.Height < ply.Y)
+            {
+                return false;
+            }
+            if (ply.Y + ply.Height < zom.Y)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

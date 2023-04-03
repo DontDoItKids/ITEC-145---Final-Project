@@ -58,6 +58,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             gr.FillEllipse(_brush, _x, _y, _width, _height);
         }
+
         //Method to determine a location and move towards it. A location being the player.
         public void MoveToPlayer(Point pointP)
         {
@@ -116,9 +117,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 }
             }
         }
-        //In the form could randomly switch between the two move methods
 
-        private void Die()
+        public void Die()
         {
             timer.Stop();
             timer.Dispose();
@@ -129,13 +129,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             //Switching between the two modes of zombie movement. Might move to a seperate timer.
             int movement;
-            movement = _rnd.Next();
-            if (movement % 2 == 0)
+            movement = _rnd.Next(1, 4);
+            if (movement == 1 || movement == 2)
             {
                 MoveToPlayer(mainForm.playerLoc);
             }
 
-            else if (movement % 2 != 0)
+            else if (movement == 3)
             {
                 MoveRandom();
             }
