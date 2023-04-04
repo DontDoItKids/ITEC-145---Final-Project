@@ -19,6 +19,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         int seconds;
         int minutes;
+        int score;
 
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
@@ -131,10 +132,11 @@ namespace ITEC_145___Final_Project___Trey_Hall
                         bullets.Remove(b);
                     }
                 }
-            } catch { }
+            }
+            catch { }
 
             try //Wrapping things in try catch to make them work is not a great solution... but Oh Boy does it work.
-            {   
+            {
                 foreach (Bullet b in bullets)
                 {
                     foreach (Zombie z in zombies)
@@ -145,10 +147,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
                             zombies.Remove(z);
 
                             bullets.Remove(b);
+
+                            score++;
                         }
                     }
                 }
-            } catch { }
+            }
+            catch { }
 
             foreach (Zombie z in zombies)
             {
@@ -158,6 +163,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 }
             }
 
+            lblScore.Text = $"Score: {score}";
             //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
             label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
@@ -180,7 +186,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private bool Collision(Zombie zom, Bullet bul)
         {
-            if (zom.X + zom.Width  < bul.X)
+            if (zom.X + zom.Width < bul.X)
             {
                 return false;
             }
