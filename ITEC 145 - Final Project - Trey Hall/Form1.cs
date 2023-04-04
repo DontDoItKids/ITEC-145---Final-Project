@@ -10,7 +10,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         List<Bullet> bullets = new List<Bullet>();
         List<Zombie> zombies = new List<Zombie>();
-        //https://stackoverflow.com/questions/55010535/c-sharp-finding-angle-between-2-given-points
+        
         bool UpOrDown;
         bool LeftOrRight;
 
@@ -20,6 +20,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
         int seconds;
         int minutes;
         int score;
+
+        Random rndWidth = new Random();
+        Random rndHeight = new Random();
 
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
@@ -36,7 +39,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
-            p1 = new Player(156, 156);
+            p1 = new Player(156, 156);            
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -145,9 +148,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                         {
                             z.Die();
                             zombies.Remove(z);
-
                             bullets.Remove(b);
-
                             score++;
                         }
                     }
@@ -158,9 +159,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             foreach (Zombie z in zombies)
             {
                 if (Collision(z, p1))
-                {
-                    GameOver();
-                }
+                    { GameOver(); }
             }
 
             lblScore.Text = $"Score: {score}";
@@ -180,7 +179,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void ZombieSpawn_Tick(object sender, EventArgs e)
         {
-            Zombie Zom = new Zombie(0, 0);
+            Zombie Zom = new Zombie();
             zombies.Add(Zom);
         }
 

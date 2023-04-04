@@ -21,6 +21,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private int _y;
         private int _centerX;
         private int _centerY;
+        private int _xSpawn;
+        private int _ySpawn;
 
         private Random _rnd = new Random();
 
@@ -40,12 +42,11 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
 
         //Constructor
-        public Zombie(int x, int y)
+        public Zombie()
         {
             _brush = new SolidBrush(Color.PaleGreen);
 
-            _x = x;
-            _y = y;
+            spawnLocation();
 
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
@@ -123,6 +124,35 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             timer.Stop();
             timer.Dispose();
+        }
+        
+        public void spawnLocation()
+        {
+            //Wanted to spawn only bottom and right but I changed my mind;
+            //Dont want to bother changing the variable name
+            int xORy = _rnd.Next(0,4);
+            if (xORy == 0)
+            {
+                _xSpawn = _rnd.Next(mainForm.ClientSize.Width - _width, mainForm.ClientSize.Width);
+                _ySpawn = _rnd.Next(0, mainForm.ClientSize.Height);
+            }
+            else if(xORy == 1)
+            {
+               _ySpawn = _rnd.Next(mainForm.ClientSize.Height - _height, mainForm.ClientSize.Height);
+               _xSpawn = _rnd.Next(0, mainForm.ClientSize.Width);
+            }
+            else if (xORy == 2)
+            {
+                _xSpawn = _rnd.Next(0 - _width, 0);
+                _ySpawn = _rnd.Next(0, mainForm.ClientSize.Height);
+            }
+            else if (xORy == 3)
+            {
+                _ySpawn = _rnd.Next(0 - _height, 0);
+                _xSpawn = _rnd.Next(0, mainForm.ClientSize.Width);
+            }
+            _x = _xSpawn;
+            _y = _ySpawn;
         }
         
         //Events
