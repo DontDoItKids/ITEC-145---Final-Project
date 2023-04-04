@@ -94,7 +94,7 @@
             // 
             lblClock.AutoSize = true;
             lblClock.Font = new Font("Segoe UI", 11.7818184F, FontStyle.Regular, GraphicsUnit.Point);
-            lblClock.Location = new Point(438, 11);
+            lblClock.Location = new Point(436, 11);
             lblClock.Name = "lblClock";
             lblClock.Size = new Size(56, 25);
             lblClock.TabIndex = 4;
