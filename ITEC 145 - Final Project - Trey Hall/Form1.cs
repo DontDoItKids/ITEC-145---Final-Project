@@ -1,3 +1,4 @@
+using Microsoft.Win32;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.Intrinsics.X86;
@@ -107,18 +108,18 @@ namespace ITEC_145___Final_Project___Trey_Hall
         {
             if (e.Button == MouseButtons.Left)
             {
-                //if (powar.YourMother == Powerups.Powers.BigBullet)
-                //{
-                //    Bullet b1 = new Bullet(mouseLoc, playerLoc);
-                //    b1.Width = 15;
-                //    b1.Height = 15;
-                //    bullets.Add(b1);
-                //}
-                //else
-                //{
-                Bullet b1 = new Bullet(mouseLoc, playerLoc);
+                if (power1 == true)
+                {
+                    Bullet b1 = new Bullet(mouseLoc, playerLoc);
+                    b1.Width = 15;
+                    b1.Height = 15;
                     bullets.Add(b1);
-                //}
+                }
+                else
+                {
+                    Bullet b1 = new Bullet(mouseLoc, playerLoc);
+                    bullets.Add(b1);
+                }
             }
         }
 
@@ -242,7 +243,15 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
                 if (powar.YourMother == Powerups.Powers.BigBullet)
                 {
-                    
+                    power1 = true;
+                }
+                else if (powar.YourMother == Powerups.Powers.FasterMove)
+                {
+                    power2 = true;
+                }
+                else if (powar.YourMother == Powerups.Powers.Small)
+                {
+                    power3 = true;
                 }
             }
             else if (seconds == 45)
@@ -255,7 +264,9 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         private void powerTimer_Tick(object sender, EventArgs e)
         {
-            
+            power1 = false;
+            power2 = false; 
+            power3 = false;
         }
 
         //Methods -----
