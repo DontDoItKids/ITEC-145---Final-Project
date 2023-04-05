@@ -26,12 +26,12 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         //Properties
         public Point CentreLoc { get { return _centreLoc; } set { _centreLoc = value; } }
-        public int Xspeed { get { return _xSpeed; } }
-        public int Yspeed { get { return _ySpeed; } }
+        public int Xspeed { get { return _xSpeed; } set { _xSpeed = value; } }
+        public int Yspeed { get { return _ySpeed; } set { _ySpeed = value; } }
         public int X { get { return _x; } }
         public int Y { get { return _y; } }
-        public int Height { get { return _height; } }
-        public int Width { get { return _width; } }
+        public int Height { get { return _height; } set { _height = value; } }
+        public int Width { get { return _width; } set { _width = value; } }
 
         //Constructor make it take a file path for the image
         public Player(int x, int y)

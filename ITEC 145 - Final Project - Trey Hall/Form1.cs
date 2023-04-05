@@ -7,10 +7,12 @@ namespace ITEC_145___Final_Project___Trey_Hall
     public partial class Form1 : Form
     {
         Player p1;
+        Powerups powar;
 
         List<Bullet> bullets = new List<Bullet>();
         List<Zombie> zombies = new List<Zombie>();
-        
+        List<Powerups> powerUps = new List<Powerups>();
+
         bool UpOrDown;
         bool LeftOrRight;
 
@@ -34,12 +36,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
             Player.mainForm = this;
             Bullet.mainForm = this;
             Zombie.mainForm = this;
+            Powerups.mainForm = this;
 
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             this.SetStyle(ControlStyles.UserPaint, true);
 
-            p1 = new Player(156, 156);            
+            p1 = new Player(156, 156);
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -159,7 +162,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             foreach (Zombie z in zombies)
             {
                 if (Collision(z, p1))
-                    { GameOver(); }
+                { GameOver(); }
             }
 
             lblScore.Text = $"Score: {score}";
@@ -227,6 +230,28 @@ namespace ITEC_145___Final_Project___Trey_Hall
             return true;
         }
 
+        private bool Collision(Powerups pow, Player ply)
+        {
+            if (pow.X + pow.Width < ply.X)
+            {
+                return false;
+            }
+            if (ply.X + ply.Width < pow.X)
+            {
+                return false;
+            }
+            if (pow.Y + pow.Height < ply.Y)
+            {
+                return false;
+            }
+            if (ply.Y + ply.Height < pow.Y)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void GameOver()
         {
             timer1.Stop();
@@ -255,6 +280,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
             {
                 minutes++;
                 seconds = 0;
+                if (ZombieSpawn.Interval > 800)
+                        ZombieSpawn.Interval -= 50;
             }
 
             if (seconds < 10)
@@ -265,6 +292,23 @@ namespace ITEC_145___Final_Project___Trey_Hall
             {
                 lblClock.Text = $"{minutes}:{seconds}";
             }
+
+            if (seconds == 45 && minutes >= 1)
+            {
+                powar = new Powerups();
+                powerUps.Add(powar);
+            }
+            else if (seconds == 45)
+            {
+                powar = new Powerups();
+                powerUps.Add(powar);
+            }
+
+        }
+
+        private void powerTimer_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

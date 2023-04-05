@@ -37,6 +37,7 @@
             Clock = new System.Windows.Forms.Timer(components);
             lblClock = new Label();
             lblScore = new Label();
+            powerTimer = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // timer1
@@ -47,15 +48,15 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 11);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(45, 19);
+            label1.Size = new Size(38, 15);
             label1.TabIndex = 1;
             label1.Text = "label1";
             // 
             // ZombieSpawn
             // 
-            ZombieSpawn.Interval = 1000;
+            ZombieSpawn.Interval = 1500;
             ZombieSpawn.Tick += ZombieSpawn_Tick;
             // 
             // btnStart
@@ -66,10 +67,9 @@
             btnStart.FlatAppearance.MouseOverBackColor = Color.White;
             btnStart.FlatStyle = FlatStyle.Flat;
             btnStart.Font = new Font("Bahnschrift", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStart.Location = new Point(302, 171);
-            btnStart.Margin = new Padding(3, 4, 3, 4);
+            btnStart.Location = new Point(264, 135);
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(343, 190);
+            btnStart.Size = new Size(300, 150);
             btnStart.TabIndex = 2;
             btnStart.Text = "Start";
             btnStart.UseVisualStyleBackColor = false;
@@ -79,9 +79,9 @@
             // 
             lblInstructions.AutoSize = true;
             lblInstructions.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblInstructions.Location = new Point(314, 365);
+            lblInstructions.Location = new Point(275, 288);
             lblInstructions.Name = "lblInstructions";
-            lblInstructions.Size = new Size(320, 17);
+            lblInstructions.Size = new Size(267, 14);
             lblInstructions.TabIndex = 3;
             lblInstructions.Text = "W,A,S,D for Movement - Mouse to Aim and Shoot";
             // 
@@ -94,9 +94,9 @@
             // 
             lblClock.AutoSize = true;
             lblClock.Font = new Font("Segoe UI", 11.7818184F, FontStyle.Regular, GraphicsUnit.Point);
-            lblClock.Location = new Point(436, 11);
+            lblClock.Location = new Point(382, 9);
             lblClock.Name = "lblClock";
-            lblClock.Size = new Size(56, 25);
+            lblClock.Size = new Size(49, 21);
             lblClock.TabIndex = 4;
             lblClock.Text = "00:00";
             // 
@@ -104,23 +104,27 @@
             // 
             lblScore.AutoSize = true;
             lblScore.Font = new Font("Segoe UI", 11.7818184F, FontStyle.Regular, GraphicsUnit.Point);
-            lblScore.Location = new Point(850, 11);
+            lblScore.Location = new Point(744, 9);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(75, 25);
+            lblScore.Size = new Size(65, 21);
             lblScore.TabIndex = 5;
             lblScore.Text = "Score: 0";
             // 
+            // powerTimer
+            // 
+            powerTimer.Interval = 10000;
+            powerTimer.Tick += powerTimer_Tick;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 19F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(942, 584);
+            ClientSize = new Size(824, 461);
             Controls.Add(lblScore);
             Controls.Add(lblClock);
             Controls.Add(lblInstructions);
             Controls.Add(btnStart);
             Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
             Paint += Form1_Paint;
@@ -140,5 +144,6 @@
         private System.Windows.Forms.Timer Clock;
         private Label lblClock;
         private Label lblScore;
+        private System.Windows.Forms.Timer powerTimer;
     }
 }
