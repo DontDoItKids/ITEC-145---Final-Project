@@ -28,111 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            timer1 = new System.Windows.Forms.Timer(components);
-            label1 = new Label();
-            ZombieSpawn = new System.Windows.Forms.Timer(components);
-            btnStart = new Button();
-            lblInstructions = new Label();
-            Clock = new System.Windows.Forms.Timer(components);
-            lblClock = new Label();
-            lblScore = new Label();
-            powerTimer = new System.Windows.Forms.Timer(components);
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.ZombieSpawn = new System.Windows.Forms.Timer(this.components);
+            this.btnStart = new System.Windows.Forms.Button();
+            this.lblInstructions = new System.Windows.Forms.Label();
+            this.Clock = new System.Windows.Forms.Timer(this.components);
+            this.lblClock = new System.Windows.Forms.Label();
+            this.lblScore = new System.Windows.Forms.Label();
+            this.powerTimer = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
             // 
             // timer1
             // 
-            timer1.Interval = 20;
-            timer1.Tick += timer1_Tick;
+            this.timer1.Interval = 20;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 1;
-            label1.Text = "label1";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
             // 
             // ZombieSpawn
             // 
-            ZombieSpawn.Interval = 1500;
-            ZombieSpawn.Tick += ZombieSpawn_Tick;
+            this.ZombieSpawn.Interval = 1500;
+            this.ZombieSpawn.Tick += new System.EventHandler(this.ZombieSpawn_Tick);
             // 
             // btnStart
             // 
-            btnStart.BackColor = Color.Azure;
-            btnStart.FlatAppearance.BorderColor = Color.Black;
-            btnStart.FlatAppearance.MouseDownBackColor = Color.FromArgb(215, 214, 244);
-            btnStart.FlatAppearance.MouseOverBackColor = Color.White;
-            btnStart.FlatStyle = FlatStyle.Flat;
-            btnStart.Font = new Font("Bahnschrift", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStart.Location = new Point(264, 135);
-            btnStart.Name = "btnStart";
-            btnStart.Size = new Size(300, 150);
-            btnStart.TabIndex = 2;
-            btnStart.Text = "Start";
-            btnStart.UseVisualStyleBackColor = false;
-            btnStart.Click += btnStart_Click;
+            this.btnStart.BackColor = System.Drawing.Color.Azure;
+            this.btnStart.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnStart.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(214)))), ((int)(((byte)(244)))));
+            this.btnStart.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStart.Location = new System.Drawing.Point(264, 135);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(300, 150);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // lblInstructions
             // 
-            lblInstructions.AutoSize = true;
-            lblInstructions.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            lblInstructions.Location = new Point(275, 288);
-            lblInstructions.Name = "lblInstructions";
-            lblInstructions.Size = new Size(267, 14);
-            lblInstructions.TabIndex = 3;
-            lblInstructions.Text = "W,A,S,D for Movement - Mouse to Aim and Shoot";
+            this.lblInstructions.AutoSize = true;
+            this.lblInstructions.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblInstructions.Location = new System.Drawing.Point(275, 288);
+            this.lblInstructions.Name = "lblInstructions";
+            this.lblInstructions.Size = new System.Drawing.Size(267, 14);
+            this.lblInstructions.TabIndex = 3;
+            this.lblInstructions.Text = "W,A,S,D for Movement - Mouse to Aim and Shoot";
             // 
             // Clock
             // 
-            Clock.Interval = 1000;
-            Clock.Tick += Clock_Tick;
+            this.Clock.Interval = 1000;
+            this.Clock.Tick += new System.EventHandler(this.Clock_Tick);
             // 
             // lblClock
             // 
-            lblClock.AutoSize = true;
-            lblClock.Font = new Font("Segoe UI", 11.7818184F, FontStyle.Regular, GraphicsUnit.Point);
-            lblClock.Location = new Point(382, 9);
-            lblClock.Name = "lblClock";
-            lblClock.Size = new Size(49, 21);
-            lblClock.TabIndex = 4;
-            lblClock.Text = "00:00";
+            this.lblClock.AutoSize = true;
+            this.lblClock.Font = new System.Drawing.Font("Segoe UI", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblClock.Location = new System.Drawing.Point(382, 9);
+            this.lblClock.Name = "lblClock";
+            this.lblClock.Size = new System.Drawing.Size(49, 21);
+            this.lblClock.TabIndex = 4;
+            this.lblClock.Text = "00:00";
             // 
             // lblScore
             // 
-            lblScore.AutoSize = true;
-            lblScore.Font = new Font("Segoe UI", 11.7818184F, FontStyle.Regular, GraphicsUnit.Point);
-            lblScore.Location = new Point(744, 9);
-            lblScore.Name = "lblScore";
-            lblScore.Size = new Size(65, 21);
-            lblScore.TabIndex = 5;
-            lblScore.Text = "Score: 0";
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Segoe UI", 11.78182F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblScore.Location = new System.Drawing.Point(744, 9);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(65, 21);
+            this.lblScore.TabIndex = 5;
+            this.lblScore.Text = "Score: 0";
             // 
             // powerTimer
             // 
-            powerTimer.Interval = 5000;
-            powerTimer.Tick += powerTimer_Tick;
+            this.powerTimer.Interval = 5000;
+            this.powerTimer.Tick += new System.EventHandler(this.powerTimer_Tick);
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(824, 461);
-            Controls.Add(lblScore);
-            Controls.Add(lblClock);
-            Controls.Add(lblInstructions);
-            Controls.Add(btnStart);
-            Controls.Add(label1);
-            Name = "Form1";
-            Text = "Form1";
-            Paint += Form1_Paint;
-            KeyDown += Form1_KeyDown;
-            KeyUp += Form1_KeyUp;
-            MouseClick += Form1_MouseClick;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(138)))), ((int)(((byte)(135)))));
+            this.ClientSize = new System.Drawing.Size(824, 461);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblClock);
+            this.Controls.Add(this.lblInstructions);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.label1);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

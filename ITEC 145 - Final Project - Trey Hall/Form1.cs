@@ -30,6 +30,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
         Random rndWidth = new Random();
         Random rndHeight = new Random();
 
+        Button btnRestart;
+
         public enum KeyMove { none = 0, up = 1, down = 2, left = 4, right = 8 }
         KeyMove keyPlayer = KeyMove.none;
 
@@ -143,6 +145,44 @@ namespace ITEC_145___Final_Project___Trey_Hall
             timer1.Enabled = true;
             ZombieSpawn.Enabled = true;
             Clock.Enabled = true;
+        }
+
+        public void btnRestart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (Bullet b in bullets)
+                {
+                    bullets.Remove(b);
+                }
+                foreach (Zombie z in zombies)
+                {
+                    zombies.Remove(z);
+                }
+            } catch { }
+
+            timer1.Start();
+            ZombieSpawn.Start();
+            Clock.Start();
+            ZombieSpawn.Interval = 1500;
+
+            seconds = 0;
+            minutes = 0;
+            score = 0;
+
+            power1 = false;
+            power2 = false;
+            power3 = false;
+
+            p1.Xspeed = 5;
+            p1.Yspeed = 5;
+            p1.Width = 30;
+            p1.Height = 30;
+
+            powerTimer.Enabled = false;
+
+            btnRestart.Enabled = false;
+            btnRestart.Visible = false;
         }
 
         //Timers -----
@@ -398,10 +438,22 @@ namespace ITEC_145___Final_Project___Trey_Hall
             return true;
         }
 
-        private void GameOver()
+        public void GameOver()
         {
             timer1.Stop();
             ZombieSpawn.Stop();
+            Clock.Stop();
+
+            btnRestart = new Button();
+            btnRestart.Text = "Restart?";
+            btnRestart.Font = new System.Drawing.Font("Bahnschrift SemiBold SemiConden", 9.75F, System.Drawing.FontStyle.Bold);
+            btnRestart.Size = new Size(177, 23);
+            btnRestart.Left = 459;
+            btnRestart.Top = 42;
+            btnRestart.BackColor = Color.White;
+            btnRestart.FlatStyle = FlatStyle.Flat;
+            btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            Controls.Add(btnRestart);
 
             MessageBox.Show("You Dead");
         }

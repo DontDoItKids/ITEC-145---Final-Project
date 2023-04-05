@@ -13,7 +13,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
         //Fields
         private int _height = 20;
         private int _width = 35;
-
         private int _x;
         private int _y;
 
