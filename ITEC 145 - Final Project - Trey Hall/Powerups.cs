@@ -41,7 +41,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             _x = _rnd.Next(_width, mainForm.ClientSize.Width - (int)(_width * 1.5));
             _y = _rnd.Next(_height, mainForm.ClientSize.Height - (int)(_height * 1.5));
 
-            _power = _rnd.Next(0, 2);
+            _power = _rnd.Next(0, 3);
             if (_power == 0)
             {
                 powerUp = Powers.BigBullet;

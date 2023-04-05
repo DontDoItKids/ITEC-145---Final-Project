@@ -7,7 +7,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
     public partial class Form1 : Form
     {
         Player p1;
-        Powerups powar;
 
         List<Bullet> bullets = new List<Bullet>();
         List<Zombie> zombies = new List<Zombie>();
@@ -22,6 +21,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
         int seconds;
         int minutes;
         int score;
+
+        bool power1 = false;
+        bool power2 = false;
+        bool power3 = false;
 
         Random rndWidth = new Random();
         Random rndHeight = new Random();
@@ -45,6 +48,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
             p1 = new Player(156, 156);
         }
 
+        //Events -----
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyData)
@@ -99,6 +103,39 @@ namespace ITEC_145___Final_Project___Trey_Hall
             }
         }
 
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                //if (powar.YourMother == Powerups.Powers.BigBullet)
+                //{
+                //    Bullet b1 = new Bullet(mouseLoc, playerLoc);
+                //    b1.Width = 15;
+                //    b1.Height = 15;
+                //    bullets.Add(b1);
+                //}
+                //else
+                //{
+                Bullet b1 = new Bullet(mouseLoc, playerLoc);
+                    bullets.Add(b1);
+                //}
+            }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            btnStart.Enabled = false;
+            btnStart.Visible = false;
+
+            lblInstructions.Enabled = false;
+            lblInstructions.Visible = false;
+
+            timer1.Enabled = true;
+            ZombieSpawn.Enabled = true;
+            Clock.Enabled = true;
+        }
+
+        //Timers -----
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Invalidate(false);
@@ -124,7 +161,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 p1.MoveX(LeftOrRight);
             }
 
-            //Lets figure out the centre point for the Player
             playerLoc = new Point(p1.X + (p1.Width / 2), p1.Y + (p1.Height / 2));
             p1.CentreLoc = playerLoc;
 
@@ -171,21 +207,58 @@ namespace ITEC_145___Final_Project___Trey_Hall
             label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
         }
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                Bullet b1 = new Bullet(mouseLoc, playerLoc);
-                bullets.Add(b1);
-            }
-        }
-
         private void ZombieSpawn_Tick(object sender, EventArgs e)
         {
             Zombie Zom = new Zombie();
             zombies.Add(Zom);
         }
 
+
+
+        private void Clock_Tick(object sender, EventArgs e)
+        {
+            seconds++;
+            if (seconds == 60)
+            {
+                minutes++;
+                seconds = 0;
+                if (ZombieSpawn.Interval > 800)
+                        ZombieSpawn.Interval -= 50;
+            }
+
+            if (seconds < 10)
+            {
+                lblClock.Text = $"{minutes}:0{seconds}";
+            }
+            else
+            {
+                lblClock.Text = $"{minutes}:{seconds}";
+            }
+
+            if (seconds == 45 && minutes >= 1)
+            {
+                Powerups powar = new Powerups();
+                powerUps.Add(powar);
+
+                if (powar.YourMother == Powerups.Powers.BigBullet)
+                {
+                    
+                }
+            }
+            else if (seconds == 45)
+            {
+                Powerups powar = new Powerups();
+                powerUps.Add(powar);
+            }
+
+        }
+
+        private void powerTimer_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        //Methods -----
         private bool Collision(Zombie zom, Bullet bul)
         {
             if (zom.X + zom.Width < bul.X)
@@ -258,57 +331,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             ZombieSpawn.Stop();
 
             MessageBox.Show("You Dead");
-        }
-
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            btnStart.Enabled = false;
-            btnStart.Visible = false;
-
-            lblInstructions.Enabled = false;
-            lblInstructions.Visible = false;
-
-            timer1.Enabled = true;
-            ZombieSpawn.Enabled = true;
-            Clock.Enabled = true;
-        }
-
-        private void Clock_Tick(object sender, EventArgs e)
-        {
-            seconds++;
-            if (seconds == 60)
-            {
-                minutes++;
-                seconds = 0;
-                if (ZombieSpawn.Interval > 800)
-                        ZombieSpawn.Interval -= 50;
-            }
-
-            if (seconds < 10)
-            {
-                lblClock.Text = $"{minutes}:0{seconds}";
-            }
-            else
-            {
-                lblClock.Text = $"{minutes}:{seconds}";
-            }
-
-            if (seconds == 45 && minutes >= 1)
-            {
-                powar = new Powerups();
-                powerUps.Add(powar);
-            }
-            else if (seconds == 45)
-            {
-                powar = new Powerups();
-                powerUps.Add(powar);
-            }
-
-        }
-
-        private void powerTimer_Tick(object sender, EventArgs e)
-        {
-
         }
     }
 }
