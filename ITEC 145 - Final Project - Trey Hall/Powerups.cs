@@ -12,7 +12,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
         //Fields
         private int _height = 20;
-        private int _width = 50;
+        private int _width = 35;
 
         private int _x;
         private int _y;
@@ -41,7 +41,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
             _x = _rnd.Next(_width, mainForm.ClientSize.Width - (int)(_width * 1.5));
             _y = _rnd.Next(_height, mainForm.ClientSize.Height - (int)(_height * 1.5));
 
-            _power = _rnd.Next(0, 3);
+            _power = _rnd.Next(0,3);
+
             if (_power == 0)
             {
                 powerUp = Powers.BigBullet;
@@ -54,7 +55,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             {
                 powerUp = Powers.Small;
             }
-
         }
 
         //Methods

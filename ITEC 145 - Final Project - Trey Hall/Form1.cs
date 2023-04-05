@@ -102,6 +102,11 @@ namespace ITEC_145___Final_Project___Trey_Hall
             {
                 b.Shoot(e.Graphics);
             }
+
+            foreach (Powerups p in powerUps)
+            {
+                p.Spawn(e.Graphics);
+            }
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
@@ -202,6 +207,48 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 { GameOver(); }
             }
 
+            try
+            {
+                foreach(Powerups p in powerUps)
+                {
+                    if (Collision(p, p1))
+                    {
+                        int pow;
+                        pow = (int)p.YourMother;
+
+                        if (pow == 0)
+                        {
+                            power1 = true;
+                            powerTimer.Enabled = true;
+                        }
+                        else if (pow == 1)
+                        {
+                            power2 = true;
+                            powerTimer.Enabled = true;
+                        }
+                        else if (pow == 2)
+                        {
+                            power3 = true;
+                            powerTimer.Enabled = true;
+                        }
+                        powerUps.Remove(p);
+                    }
+                }
+
+            } catch { }
+
+            if (power2 == true)
+            {
+                p1.Xspeed = 7;
+                p1.Yspeed = 7;
+            }
+
+            if (power3 == true)
+            {
+                p1.Width = 15;
+                p1.Height = 15;
+            }
+
             lblScore.Text = $"Score: {score}";
             //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
@@ -213,8 +260,6 @@ namespace ITEC_145___Final_Project___Trey_Hall
             Zombie Zom = new Zombie();
             zombies.Add(Zom);
         }
-
-
 
         private void Clock_Tick(object sender, EventArgs e)
         {
@@ -254,7 +299,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     power3 = true;
                 }
             }
-            else if (seconds == 45)
+            else if (seconds == 5)
             {
                 Powerups powar = new Powerups();
                 powerUps.Add(powar);
@@ -267,6 +312,13 @@ namespace ITEC_145___Final_Project___Trey_Hall
             power1 = false;
             power2 = false; 
             power3 = false;
+
+            p1.Xspeed = 5;
+            p1.Yspeed = 5;
+            p1.Width = 30;
+            p1.Height = 30;
+
+            powerTimer.Enabled = false;
         }
 
         //Methods -----
