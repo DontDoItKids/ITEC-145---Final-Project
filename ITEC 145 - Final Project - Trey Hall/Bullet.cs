@@ -210,6 +210,11 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     }
                 }
             }
+
+            if (_xSpeed > 50)
+            {
+                _xSpeed = 50;
+            }
         }
 
         //Methods

@@ -112,7 +112,7 @@
             // 
             // powerTimer
             // 
-            powerTimer.Interval = 10000;
+            powerTimer.Interval = 5000;
             powerTimer.Tick += powerTimer_Tick;
             // 
             // Form1

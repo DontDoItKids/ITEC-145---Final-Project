@@ -47,6 +47,10 @@ namespace ITEC_145___Final_Project___Trey_Hall
             this.SetStyle(ControlStyles.UserPaint, true);
 
             p1 = new Player(156, 156);
+
+            //Enable to see player and mouse location
+            label1.Enabled = false;
+            label1.Visible = false;
         }
 
         //Events -----
@@ -209,7 +213,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
 
             try
             {
-                foreach(Powerups p in powerUps)
+                foreach (Powerups p in powerUps)
                 {
                     if (Collision(p, p1))
                     {
@@ -235,7 +239,8 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     }
                 }
 
-            } catch { }
+            }
+            catch { }
 
             if (power2 == true)
             {
@@ -249,10 +254,15 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 p1.Height = 15;
             }
 
+            if (score >= 250)
+            {
+                MessageBox.Show("Get a Life");
+            }
+
             lblScore.Text = $"Score: {score}";
-            //Debug
             mouseLoc = this.PointToClient(Cursor.Position);
-            label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
+            //Debug
+            //label1.Text = $"X = {mouseLoc.X} Y = {mouseLoc.Y} Player X = {playerLoc.X} Player Y = {playerLoc.Y}";
         }
 
         private void ZombieSpawn_Tick(object sender, EventArgs e)
@@ -269,7 +279,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                 minutes++;
                 seconds = 0;
                 if (ZombieSpawn.Interval > 800)
-                        ZombieSpawn.Interval -= 50;
+                    ZombieSpawn.Interval -= 50;
             }
 
             if (seconds < 10)
@@ -299,7 +309,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
                     power3 = true;
                 }
             }
-            else if (seconds == 5)
+            else if (seconds == 45)
             {
                 Powerups powar = new Powerups();
                 powerUps.Add(powar);
@@ -310,7 +320,7 @@ namespace ITEC_145___Final_Project___Trey_Hall
         private void powerTimer_Tick(object sender, EventArgs e)
         {
             power1 = false;
-            power2 = false; 
+            power2 = false;
             power3 = false;
 
             p1.Xspeed = 5;
